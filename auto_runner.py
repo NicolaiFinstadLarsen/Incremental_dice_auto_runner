@@ -76,8 +76,32 @@ def check_upgrade():
         # Move back to start pos.
         pydi.moveTo(2617, 26, duration=0)
         play_game()
-    
 
     play_game()
+
+    '''
+    TODO
+    Check for more upgrades.
+    '''
+
+def go_to_shop():
+    pass
+    '''
+    TODO
+    If no upgrade, change to shop tab
+    '''
+
+def check_shop_upgrade():
+    pass
+    '''
+    Check shop upgrades and buy¨
+    '''
+
+def skill_tree():
+    pass
+    '''
+    TODO
+    Is it possible to do somthing in skill tree?
+    '''
 
 play_game()
