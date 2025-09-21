@@ -24,11 +24,12 @@ def play_game():
     pixel_movement = 20 # Slow but hits all at no area increase
 
     # The duration the mouse uses from start to stop pos
-    speed = 0.5# 1.75 # Seems to pick up dice with no faster speed that this
+    speed = 1.75 # Seems to pick up dice with no faster speed that this
 
     # Checking for upgrade every so often
     upgrade_counter = 0
-    time_to_upgrade = 0
+    # Just big now to not use up all the upgrades in testing. 
+    time_to_upgrade = 20
 
     while True:
         change_y = top_y
