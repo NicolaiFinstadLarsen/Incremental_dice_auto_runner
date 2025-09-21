@@ -29,7 +29,7 @@ def play_game():
     # Checking for upgrade every so often
     upgrade_counter = 0
     # Just big now to not use up all the upgrades in testing. 
-    time_to_upgrade = 20
+    time_to_upgrade = 15
 
     while True:
         change_y = top_y
@@ -44,13 +44,27 @@ def play_game():
 
         # Checking upgrade after x full screen crawls.
         if upgrade_counter == time_to_upgrade:
-            check_upgrade()
+            go_to_shop_tab(False)
         upgrade_counter += 1
 
         # Move back to top. 
         pyag.moveTo(full_right_x, top_y, duration=0)
 
-def check_upgrade():
+
+def go_to_shop_tab(been_in_upgrade):
+    # Shop tab button Point(x=4155, y=105)
+    pydi.moveTo(4155, 105)
+    time.sleep(1)
+    pydi.mouseDown()
+    time.sleep(1)
+    pydi.mouseUp()
+    if been_in_upgrade == True:
+        play_game()
+    else:
+        check_shop_tab()
+
+
+def check_shop_tab():
     # Checking if pixel for fist upgrade is green
     # Pixel for 1st upgrade Point(x=4383, y=210)
     # Middle of first upgrade button ish(x=4276, y=207)
@@ -65,9 +79,9 @@ def check_upgrade():
         play_game()
 
     #Check upgrade nr 2
-    # 2nd upgrade pos = Point(x=4365, y=313)
+    # 2nd upgrade pos = Point(x=4383, y=313)
     # Middle button Point(x=4297, y=300
-    elif pyag.pixelMatchesColor(4365, 313, (0,255,0)):
+    elif pyag.pixelMatchesColor(4383, 313, (0,255,0)):
         pydi.moveTo(4297, 300)
         time.sleep(1)
         pydi.mouseDown()
@@ -76,6 +90,8 @@ def check_upgrade():
         # Move back to start pos.
         pydi.moveTo(2617, 26, duration=0)
         play_game()
+    else:
+        go_to_upgrade_tab()
 
     play_game()
 
@@ -84,18 +100,40 @@ def check_upgrade():
     Check for more upgrades.
     '''
 
-def go_to_shop():
-    pass
-    '''
-    TODO
-    If no upgrade, change to shop tab
-    '''
 
-def check_shop_upgrade():
-    pass
-    '''
-    Check shop upgrades and buy¨
-    '''
+def go_to_upgrade_tab():
+    # Upgrade tab pos Point(x=4356, y=107)
+    pydi.moveTo(4356, 107)
+    time.sleep(1)
+    pydi.mouseDown()
+    time.sleep(1)
+    pydi.mouseUp()
+    check_shop_upgrade_tab()
+
+
+def check_shop_upgrade_tab():
+    # Same pos as shop tab
+    # Check for green pixel in price
+    if pyag.pixelMatchesColor(4383, 210, (0,255,0)):
+        pydi.moveTo(4276, 207)
+        time.sleep(1)
+        pydi.mouseDown()
+        time.sleep(1)
+        pydi.mouseUp()
+        # Value 1 to play game in func
+        go_to_shop_tab(True)
+
+    elif pyag.pixelMatchesColor(4383, 313, (0,255,0)):
+        pydi.moveTo(4297, 300)
+        time.sleep(1)
+        pydi.mouseDown()
+        time.sleep(1)
+        pydi.mouseUp()
+        # Value 1 to play game in func
+        go_to_shop_tab(True)
+
+    go_to_shop_tab(True)
+
 
 def skill_tree():
     pass
