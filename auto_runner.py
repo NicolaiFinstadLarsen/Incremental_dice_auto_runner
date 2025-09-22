@@ -29,7 +29,7 @@ def play_game():
     # Checking for upgrade every so often
     upgrade_counter = 0
     # Just big now to not use up all the upgrades in testing. 
-    time_to_upgrade = 15
+    time_to_upgrade = 0
 
     while True:
         change_y = top_y
@@ -66,9 +66,9 @@ def go_to_shop_tab(been_in_upgrade):
 
 def check_shop_tab():
     # Checking if pixel for fist upgrade is green
-    # Pixel for 1st upgrade Point(x=4383, y=210)
+    # 1st upgrade pos = middle: Point(x=4397, y=216) bottom:(x=4398, y=224)
     # Middle of first upgrade button ish(x=4276, y=207)
-    if pyag.pixelMatchesColor(4383, 210, (0,255,0)):
+    if pyag.pixelMatchesColor(4397, 216, (0,255,0)) or pyag.pixelMatchesColor(4398, 224, (0, 255, 0)):
         pydi.moveTo(4276, 207)
         time.sleep(1)
         pydi.mouseDown()
@@ -79,9 +79,9 @@ def check_shop_tab():
         play_game()
 
     #Check upgrade nr 2
-    # 2nd upgrade pos = Point(x=4383, y=313)
+    # 2nd upgrade pos = middle: Point(x=4399, y=321) bottom:(x=4398, y=327)
     # Middle button Point(x=4297, y=300
-    elif pyag.pixelMatchesColor(4383, 313, (0,255,0)):
+    elif pyag.pixelMatchesColor(4399, 321, (0,255,0)) or pyag.pixelMatchesColor(4398, 327, (0, 255, 0)):
         pydi.moveTo(4297, 300)
         time.sleep(1)
         pydi.mouseDown()
@@ -114,7 +114,7 @@ def go_to_upgrade_tab():
 def check_shop_upgrade_tab():
     # Same pos as shop tab
     # Check for green pixel in price
-    if pyag.pixelMatchesColor(4383, 210, (0,255,0)):
+    if pyag.pixelMatchesColor(4397, 216, (0,255,0)) or pyag.pixelMatchesColor(4398, 224, (0, 255, 0)):
         pydi.moveTo(4276, 207)
         time.sleep(1)
         pydi.mouseDown()
@@ -123,7 +123,7 @@ def check_shop_upgrade_tab():
         # Value 1 to play game in func
         go_to_shop_tab(True)
 
-    elif pyag.pixelMatchesColor(4383, 313, (0,255,0)):
+    elif pyag.pixelMatchesColor(4399, 321, (0,255,0)) or pyag.pixelMatchesColor(4398, 327, (0, 255, 0)):
         pydi.moveTo(4297, 300)
         time.sleep(1)
         pydi.mouseDown()
